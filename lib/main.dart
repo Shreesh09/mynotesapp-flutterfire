@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mynotes/views/login_view.dart';
 
 import 'firebase_options.dart';
 
@@ -25,20 +26,6 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
-
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
 
@@ -76,7 +63,6 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         TextField(
                           controller: _email,
-                          obscureText: true,
                           enableSuggestions: true,
                           keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
@@ -99,12 +85,23 @@ class _LoginViewState extends State<LoginView> {
                             onPressed: () async {
                               final email = _email.text;
                               final password = _password.text;
-                              final userCredential = await FirebaseAuth.instance
-                                  .createUserWithEmailAndPassword(
-                                      email: email, password: password);
-                              print(userCredential);
+                              try {
+                                final userCredential = await FirebaseAuth
+                                    .instance
+                                    .createUserWithEmailAndPassword(
+                                        email: email, password: password);
+                                print(userCredential);
+                              } on FirebaseAuthException catch (e) {
+                                if (e.code == 'invalid-email') {
+                                  print(e.code);
+                                } else if (e.code == 'email-already-in-use') {
+                                  print(e.code);
+                                } else if (e.code == 'weak-password') {
+                                  print(e.code);
+                                }
+                              }
                             },
-                            child: const Text("Submit"))
+                            child: const Text("Register"))
                       ],
                     ),
                   ),
