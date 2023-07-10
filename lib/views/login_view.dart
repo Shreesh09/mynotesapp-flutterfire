@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:developer' as devtools show log;
 
+import 'package:mynotes/constants/routes.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -74,10 +76,10 @@ class _LoginViewState extends State<LoginView> {
                           if (user != null) {
                             if (user.emailVerified) {
                               Navigator.of(context).pushNamedAndRemoveUntil(
-                                  '/notes/', (route) => false);
+                                  notesRoute, (route) => false);
                             } else {
                               Navigator.of(context).pushNamedAndRemoveUntil(
-                                  '/verify-mail/', (route) => false);
+                                  verifyMailRoute, (route) => false);
                             }
                           }
                           devtools.log(userCredential.toString());
@@ -93,7 +95,7 @@ class _LoginViewState extends State<LoginView> {
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                            '/register/', (route) => false);
+                            registerRoute, (route) => false);
                       },
                       child: const Text("Register here!")),
                 ],
