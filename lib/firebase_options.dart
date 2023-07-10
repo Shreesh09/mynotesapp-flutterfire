@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '231068979958',
     projectId: 'mynotes-flutterfire-unique',
     storageBucket: 'mynotes-flutterfire-unique.appspot.com',
-    iosClientId: '231068979958-cg97i80ocgb6uu3m7dcnkn1tjsgrqike.apps.googleusercontent.com',
+    iosClientId:
+        '231068979958-cg97i80ocgb6uu3m7dcnkn1tjsgrqike.apps.googleusercontent.com',
     iosBundleId: 'se.pixolity.mynotes',
   );
 }
