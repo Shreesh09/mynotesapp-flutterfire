@@ -24,6 +24,12 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
               await user?.sendEmailVerification();
             },
             child: const Text('Send email verification')),
+        TextButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/login/', (route) => false);
+            },
+            child: const Text('Login here!')),
       ]),
     );
   }
