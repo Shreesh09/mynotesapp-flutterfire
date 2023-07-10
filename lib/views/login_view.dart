@@ -5,6 +5,8 @@ import 'dart:developer' as devtools show log;
 
 import 'package:mynotes/constants/routes.dart';
 
+import '../utilities/show_error_dialog.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -15,7 +17,6 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
-
   @override
   void initState() {
     _email = TextEditingController();
@@ -78,17 +79,21 @@ class _LoginViewState extends State<LoginView> {
                               Navigator.of(context).pushNamedAndRemoveUntil(
                                   notesRoute, (route) => false);
                             } else {
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  verifyMailRoute, (route) => false);
+                              Navigator.of(context).pushNamed(verifyMailRoute);
                             }
                           }
                           devtools.log(userCredential.toString());
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
-                            devtools.log('user-not-found');
+                            await showErrorDialog(context, 'User not found');
                           } else if (e.code == 'wrong-password') {
-                            devtools.log('wrong-password');
+                            await showErrorDialog(context, 'Wrong Password');
+                          } else {
+                            await showErrorDialog(context, '${e.code}');
                           }
+                        } catch (e) {
+                          await showErrorDialog(
+                              context, 'Invalid e-mail or password.');
                         }
                       },
                       child: const Text("Login")),
