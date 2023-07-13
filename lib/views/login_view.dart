@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'dart:developer' as devtools show log;
-
 import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/services/auth/auth_exceptions.dart';
 
@@ -71,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                         final email = _email.text;
                         final password = _password.text;
                         try {
-                          final userCredential = await AuthService.firebase()
+                          await AuthService.firebase()
                               .logIn(email: email, password: password);
                           final user = AuthService.firebase().currentUser;
                           if (user != null) {
