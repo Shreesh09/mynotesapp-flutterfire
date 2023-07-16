@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/services/auth/auth_exceptions.dart';
 import 'package:mynotes/services/auth/bloc/auth_bloc.dart';
 import 'package:mynotes/services/auth/bloc/auth_event.dart';
 import 'package:mynotes/services/auth/bloc/auth_state.dart';
-import 'package:mynotes/utilities/dialogs/loading_dialog.dart';
-
 import '../utilities/dialogs/error_dialog.dart';
 
 class LoginView extends StatefulWidget {
@@ -53,11 +49,13 @@ class _LoginViewState extends State<LoginView> {
         appBar: AppBar(
           title: const Text('Login'),
         ),
-        body: Center(
-          child: SizedBox(
-            height: 300,
-            width: 700,
+        body: SizedBox(
+          height: 300,
+          width: 700,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
                   controller: _email,
@@ -100,6 +98,13 @@ class _LoginViewState extends State<LoginView> {
                         child: const Text("Register here!")),
                   ],
                 ),
+                TextButton(
+                    onPressed: () {
+                      context.read<AuthBloc>().add(
+                            const AuthEventForgotPassword(),
+                          );
+                    },
+                    child: const Text("Forgot Password?")),
               ],
             ),
           ),
