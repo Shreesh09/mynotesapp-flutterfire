@@ -33,7 +33,7 @@ migrate_working_dir/
 /build/
 /mynotes.code-workspace
 # Symbolication related
-lib\firebase_options.dart
+/lib/firebase_options.dart
 app.*.symbols
 # Obfuscation related
 app.*.map.json
