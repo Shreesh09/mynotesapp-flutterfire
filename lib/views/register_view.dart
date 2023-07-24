@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mynotes/extensions/buildcontext/loc.dart';
 import 'package:mynotes/services/auth/auth_exceptions.dart';
 import 'package:mynotes/services/auth/bloc/auth_bloc.dart';
 import 'package:mynotes/services/auth/bloc/auth_event.dart';
@@ -38,16 +39,18 @@ class _RegisterViewState extends State<RegisterView> {
       listener: (context, state) async {
         if (state is AuthStateRegistering) {
           if (state.exception is WeakPasswordException) {
-            await showErrorDialog(context, 'Weak passoword');
+            await showErrorDialog(
+                context, context.loc.register_error_weak_password);
           } else if (state.exception is EmailAlreadyInUseException) {
-            await showErrorDialog(context, 'Email is already in use');
+            await showErrorDialog(
+                context, context.loc.register_error_email_already_in_use);
           } else if (state.exception is InvalidEmailException) {
-            await showErrorDialog(context, 'Invalid Exception');
+            await showErrorDialog(context, context.loc.register_error_generic);
           }
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Register')),
+        appBar: AppBar(title: Text(context.loc.register)),
         body: SingleChildScrollView(
           child: SizedBox(
             height: 300,
@@ -60,9 +63,9 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: _email,
                     enableSuggestions: true,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter your e-mail here',
-                        border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                        hintText: context.loc.email_text_field_placeholder,
+                        border: const OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
                   ),
@@ -70,9 +73,9 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: _password,
                     obscureText: true,
                     enableSuggestions: true,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter your password here',
-                        border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                        hintText: context.loc.password_text_field_placeholder,
+                        border: const OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
                   ),
@@ -88,14 +91,15 @@ class _RegisterViewState extends State<RegisterView> {
                                   password,
                                 ));
                           },
-                          child: const Text("Register")),
+                          child: Text(context.loc.register)),
                       TextButton(
                           onPressed: () {
                             context
                                 .read<AuthBloc>()
                                 .add(const AuthEventLogOut());
                           },
-                          child: const Text('Login here!')),
+                          child: Text(
+                              context.loc.register_view_already_registered)),
                     ],
                   )
                 ],

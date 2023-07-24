@@ -1,0 +1,62 @@
+{
+
+    "logout_button": "लॉग आउट करें",
+    "note": "विचार",
+    "cancel": "रद्द करें",
+    "yes": "हाँ",
+    "delete": "मिटाना",
+    "sharing": "बाटना",
+    "ok": "ठीक है",
+    "login": "लॉग इन करें",
+    "verify_email": "ईमेल वेरफाइ करें",
+    "register": "रजिस्टर करें",
+    "restart": "फिर से खोले",
+
+    "start_typing_your_note": "अपने विचार लिखना शुरू करे",
+    "delete_note_prompt": "क्या आप इस विचार को मिटाना चाहते है?",
+    "cannot_share_empty_note_prompt": "खाली विचार नहीं बाँट सकते!",
+    "generic_error_prompt": "ग़लती पाई गई है",
+    "logout_dialog_prompt": "क्या आप लॉग आउट करना चाहते हैं?",
+
+    "password_reset": "पासवर्ड रीसेट",
+    "password_reset_dialog_prompt": "हमने आपको एक पासवर्ड रीसेट लिंक भेजा है। अधिक जानकारी के लिए कृपया अपना ईमेल जांचें।",
+
+    "login_error_cannot_find_user": "दर्ज किए गए परिचय वाला कोई उपयोगकर्ता नहीं मिल सका!",
+    "login_error_wrong_credentials": "गलत परिचय",
+    "login_error_auth_error": "प्रमाण मे गलती",
+
+    "login_view_prompt": "कृपया विचार लिखने के लिए अपने खाते में लॉग इन करें!",
+    
+    "login_view_forgot_password": "मैं अपना पासवर्ड भूल गया",
+    "login_view_not_registered_yet": "यहाँ से खाता खोले!",
+
+    "email_text_field_placeholder": "अपना ई मेल यहा भरे",
+    "password_text_field_placeholder": "यहां अपना पासवर्ड डालें",
+    
+    "forgot_password": "पासवर्ड भूल गया",
+    "forgot_password_view_generic_error": "हम आपके अनुरोध पर कार्रवाई नहीं कर सके. कृपया सुनिश्चित करें कि आप एक पंजीकृत उपयोगकर्ता हैं, या यदि नहीं, तो एक कदम पीछे जाकर अभी उपयोगकर्ता को पंजीकृत करें।",
+    "forgot_password_view_prompt": "यदि आप अपना पासवर्ड भूल गए हैं, तो बस अपना ईमेल दर्ज करें और हम आपको एक पासवर्ड रीसेट लिंक भेजेंगे।",
+    "forgot_password_view_send_me_link": "मुझे पासवर्ड रीसेट लिंक भेजें",
+    "forgot_password_view_back_to_login": "लॉगिन पेज पर वापस जाएँ",
+
+    "register_error_weak_password": "यह पासवर्ड पर्याप्त सुरक्षित नहीं है. कृपया कोई अन्य पासवर्ड चुनें!",
+    "register_error_email_already_in_use": "यह ईमेल पहले से ही किसी अन्य उपयोगकर्ता के लिए पंजीकृत है. कृपया कोई अन्य ईमेल चुनें!",
+    "register_error_generic": "पंजीकरण करने में विफल. कृपया बाद में पुन: प्रयास करें!",
+    "register_error_invalid_email": "आपके द्वारा दर्ज किया गया ईमेल पता अमान्य प्रतीत होता है। कृपया कोई अन्य ईमेल पता आज़माएँ!",
+    "register_view_prompt": "अपना विचार देखने के लिए अपना ईमेल और पासवर्ड दर्ज करें!",
+    "register_view_already_registered": "यहां लॉगिन करें!",
+
+    "verify_email_view_prompt": "हमने आपको एक ईमेल सत्यापन भेजा है. कृपया अपना खाता सत्यापित करने के लिए इसे खोलें। यदि आपको अभी तक सत्यापन ईमेल नहीं मिला है, तो नीचे दिया गया बटन दबाएँ!",
+    "verify_email_send_email_verification": "ईमेल का प्रमाण भेजें",
+
+    "notes_title": "{count, plural, =0{कोई विचार नहीं} =1{1 विचार} other{{count} विचार}}",
+    "@notes_title": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "example": "3 विचार"
+            }
+        }
+    }
+
+}

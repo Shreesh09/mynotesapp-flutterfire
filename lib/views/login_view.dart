@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mynotes/extensions/buildcontext/loc.dart';
 import 'package:mynotes/services/auth/auth_exceptions.dart';
 import 'package:mynotes/services/auth/bloc/auth_bloc.dart';
 import 'package:mynotes/services/auth/bloc/auth_event.dart';
@@ -37,17 +38,19 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) async {
         if (state is AuthStateLoggedOut) {
           if (state.exception is UserNotFoundAuthException) {
-            await showErrorDialog(context, 'User Not Found');
+            await showErrorDialog(
+                context, context.loc.login_error_cannot_find_user);
           } else if (state.exception is WrongPasswordAuthException) {
-            await showErrorDialog(context, 'Wrong Password');
+            await showErrorDialog(
+                context, context.loc.login_error_wrong_credentials);
           } else if (state.exception is GenericAuthException) {
-            await showErrorDialog(context, 'Invalid Email or Password');
+            await showErrorDialog(context, context.loc.login_error_auth_error);
           }
         }
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Login'),
+          title: Text(context.loc.login),
         ),
         body: SingleChildScrollView(
           child: SizedBox(
@@ -63,9 +66,9 @@ class _LoginViewState extends State<LoginView> {
                     obscureText: false,
                     enableSuggestions: true,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter your e-mail here',
-                        border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                        hintText: context.loc.email_text_field_placeholder,
+                        border: const OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
                   ),
@@ -73,9 +76,9 @@ class _LoginViewState extends State<LoginView> {
                     controller: _password,
                     obscureText: true,
                     enableSuggestions: true,
-                    decoration: const InputDecoration(
-                        hintText: 'Enter your password here',
-                        border: OutlineInputBorder(
+                    decoration: InputDecoration(
+                        hintText: context.loc.password_text_field_placeholder,
+                        border: const OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10)))),
                   ),
@@ -91,14 +94,15 @@ class _LoginViewState extends State<LoginView> {
                                   password,
                                 ));
                           },
-                          child: const Text("Login")),
+                          child: Text(context.loc.login)),
                       TextButton(
                           onPressed: () {
                             context.read<AuthBloc>().add(
                                   const AuthEventShouldRegister(),
                                 );
                           },
-                          child: const Text("Register here!")),
+                          child:
+                              Text(context.loc.login_view_not_registered_yet)),
                     ],
                   ),
                   TextButton(
@@ -107,7 +111,7 @@ class _LoginViewState extends State<LoginView> {
                               const AuthEventForgotPassword(),
                             );
                       },
-                      child: const Text("Forgot Password?")),
+                      child: Text(context.loc.login_view_forgot_password)),
                 ],
               ),
             ),
